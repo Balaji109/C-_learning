@@ -14,12 +14,18 @@ namespace Enter_User
                 {
                     Console.WriteLine(user);
                     A[i] = user;
-                }   
+                }                
             }
+
+            Console.Write("{");
             for (int i = 0; i < A.Length; i++)
             {
-                Console.WriteLine(A[i]);
+                if (A[i] != 0)
+                {
+                    Console.Write(A[i]);
+                }
             }
+            Console.Write("}");
             Console.ReadLine();
         }
     }
