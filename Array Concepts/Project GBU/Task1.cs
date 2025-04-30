@@ -1,11 +1,51 @@
-using System;
+﻿using System;
 using System.IO;
 
 namespace Project_GBU
 {
     class Program
     {
+        static void Screen_Data_Collection()
+        {
+            string Name = "";
+            Console.Write("Enter a Name: ");
+            Name = Console.ReadLine();
+            using (StreamWriter sw = File.AppendText("File.txt"))
+            {
+                sw.WriteLine("Name:" + Name);
+            }
+            Console.Write("Enter the Std: ");
+            int Std = int.Parse(Console.ReadLine());
+            using (StreamWriter sw = File.AppendText("File.txt"))
+            {
+                sw.WriteLine("Std:" + Std);
+            }
+            Console.Write("Enter the number of Subjects: ");
+            int Number_of_Subjects = int.Parse(Console.ReadLine());
+            string Subject_Name = "";
+            //int subject_marks = int.Parse(Console.ReadLine());
+            for (int i = 1; i < Number_of_Subjects + 1; i++)
+            {
+                Console.Write("Name of the subjects " + i + ":");
+                Subject_Name = Console.ReadLine();
+                using (StreamWriter sw = File.AppendText("File.txt"))
+                {
+                    sw.WriteLine("subject name:" + Subject_Name);
+                }
+                Console.Write("Marks of the subjects: ");
+                int subject_marks = int.Parse(Console.ReadLine());
+                using (StreamWriter sw = File.AppendText("File.txt"))
+                {
+                    sw.WriteLine("subject marks:" + subject_marks);
+                }
+            }
+
+
+            Console.ReadLine();
+
+        }
         static void Main()
+
         {    
             Console.WriteLine("Press 1 to Enter data");
             Console.WriteLine("Press 2 to Exit");
@@ -15,17 +55,18 @@ namespace Project_GBU
             {
                 Console.WriteLine("please Enter a Valid input");
             }
-            string Name = "";
+            //string Name = "";
             while (Selection != 2)
             {
                 if (Selection == 1)
                 {
-                    Console.Write("Please Enter Name: ");
-                    Name = Console.ReadLine();
-                    using (StreamWriter sw = File.AppendText("File.txt"))
-                    {
-                        sw.WriteLine(Name);                        
-                    }
+                    //Console.Write("Please Enter Name: ");
+                    //Name = Console.ReadLine();
+                    //using (StreamWriter sw = File.AppendText("File.txt"))
+                    //{
+                    //    sw.WriteLine(Name);                        
+                    //}
+                    Screen_Data_Collection();
                     Console.Clear();          
                 }
                 Console.WriteLine("Press 1 to Enter data");
