@@ -1,15 +1,51 @@
-﻿using System;
+using System;
 using System.IO;
 
 namespace Project_GBU
 {
     class Program
     {
+        static bool Valid_Input_OR_Not(string Student_Name)
+        {
+            char[] input = Student_Name.ToCharArray();
+            bool Verification = true;
+            if (input.Length == 0 || input[0] == ' ')
+            {
+                Verification = false;
+                Console.WriteLine("please Enter a Valid input");
+            }
+
+            for (int i = 0; i < input.Length && Verification; i++)
+            {
+                if ((input[i] < 'A' || input[i] > 'Z') &&
+                    (input[i] < 'a' || input[i] > 'z') &&
+                    (input[i] != ' '))
+                {
+                    Verification = false;
+                    Console.WriteLine("please Enter a Valid input");
+                }
+            }
+
+            return Verification;
+        }
         static void Screen_Data_Collection()
         {
             string Name = "";
             Console.Write("Enter a Name: ");
-            Name = Console.ReadLine();
+            Name = Console.ReadLine();            
+            bool Valid_name;
+            Valid_name = Valid_Input_OR_Not(Name);
+            while (!Valid_name)
+            {
+                Console.Clear();
+                Console.WriteLine("Please enter a Valid input");
+                Console.ReadLine();
+                Console.Clear();
+                Console.Write("Enter a Name: ");
+                Name = Console.ReadLine();
+                Valid_name = Valid_Input_OR_Not(Name);
+                
+            }
             using (StreamWriter sw = File.AppendText("File.txt"))
             {
                 sw.WriteLine("Name:" + Name);
@@ -55,7 +91,7 @@ namespace Project_GBU
             {
                 Console.WriteLine("please Enter a Valid input");
             }
-            //string Name = "";
+
             while (Selection != 2)
             {
                 if (Selection == 1)
